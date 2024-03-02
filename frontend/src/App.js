@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   const [messages, setMessages] = useState([])
   useEffect(() => {
-    fetch(process.env.BACKEND_URL)
+    fetch(process.env.REACT_APP_BACKEND_URL)
         .then(res => res.json())
         .then(data => setMessages(data))
   }, [])
@@ -14,7 +14,7 @@ function App() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: '' })
         };
-        fetch(process.env.BACKEND_URL, requestOptions)
+        fetch(process.env.REACT_APP_BACKEND_URL, requestOptions)
             .then(res => res.json())
             .then(data => setMessages([...messages, data]))
     }
@@ -24,7 +24,7 @@ function App() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: '' })
         };
-        fetch(process.env.BACKEND_URL, requestOptions)
+        fetch(process.env.REACT_APP_BACKEND_URL, requestOptions)
             .then(res => res.json())
             .then(data => setMessages([...data]))
     }
@@ -33,7 +33,7 @@ function App() {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
       };
-      fetch(process.env.BACKEND_URL + `?id=${messages.pop().id}`, requestOptions)
+      fetch(process.env.REACT_APP_BACKEND_URL + `?id=${messages.pop().id}`, requestOptions)
           .then(res => res.json())
           .then(data => setMessages([...data]))
       }
